@@ -1,0 +1,38 @@
+<header>
+    <h1>Python Quiz</h1>
+    <nav>
+        <a href="/">Home</a>
+        {% if session.get('user_id') %}
+            <a href="/quiz">Quiz</a>
+            <a href="#" id="logout-link" role="button">Logout</a>
+        {% else %}
+            <a href="/register">Register</a>
+            <a href="/login">Login</a>
+        {% endif %}
+    </nav>
+</header>
+
+<script>
+// Optional: make logout send POST to the API logout endpoint and then reload.
+// Keeps this script with the header so the logout link works without a dedicated
+// footer include, but the actual footer HTML is moved to a separate partial.
+(function(){
+    const logoutLink = document.getElementById('logout-link');
+    if (!logoutLink) return;
+    logoutLink.addEventListener('click', async (e) => {
+        e.preventDefault();
+        try {
+            const csrf = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
+            const resp = await fetch('/api/logout', { method: 'POST', headers: (csrf ? {'X-CSRF-Token': csrf} : {}) });
+            if (resp.ok) {
+                window.location.href = '/login';
+            } else {
+                alert('Logout failed');
+            }
+        } catch (err) {
+            console.error(err);
+            alert('Logout error');
+        }
+    });
+})();
+</script>

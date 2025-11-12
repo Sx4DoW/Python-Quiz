@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', () => {
     let timer;
     let validCities = [];
     const cityInput = document.getElementById('city');

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token }}">
+    <script src="/static/js/register.js"></script>
+    <title>Register - Python Quiz</title>
+</head>
+<body>
+    {% include '_nav.html' %}
+
+    <main>
+    <h1>Register</h1>
+    
+    <form id="registerForm">
+        <div>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+        </div>
+        
+        <div>
+            <label for="nickname">Nickname:</label>
+            <input type="text" id="nickname" name="nickname" required>
+        </div>
+        
+        <div>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        
+        <div>
+            <label for="confirm_password">Confirm Password:</label>
+            <input type="password" id="confirm_password" name="confirm_password" required>
+        </div>
+        
+        <button type="submit">Register</button>
+    </form>
+    
+    <p>Already have an account? <a href="/login">Login here</a></p>
+    
+    </main>
+
+    {% include '_footer.html' %}
+</body>
+</html>

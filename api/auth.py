@@ -1,4 +1,4 @@
-from flask import Blueprint, request, jsonify, session
+from flask import Blueprint, request, jsonify, session, current_app
 from werkzeug.security import generate_password_hash, check_password_hash
 from db.tables import db, User
 import bleach
@@ -95,7 +95,12 @@ def logout():
     """
     Endpoint for user logout.
     """
+    # CSRF protection: require X-CSRF-Token header to match session token
+    token = request.headers.get('X-CSRF-Token')
+    if not token or token != session.get('csrf_token'):
+        return jsonify({'error': 'Invalid CSRF token'}), 403
+
     # Delete user session
     session.clear()
-    
+
     return jsonify({'message': 'Logout successful'}), 200
