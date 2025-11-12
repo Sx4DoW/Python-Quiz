@@ -36,41 +36,23 @@ python -m venv venv
 source venv/Scripts/activate
 ```
 
-2. Install dependencies (create `requirements.txt` later):
+1. Install dependencies:
 
 ```bash
-pip install flask flask_sqlalchemy flask_wtf werkzeug requests
+pip install -r requirements.txt
 ```
 
-3. Configure environment variables for development (example):
+1. Configure environment variables for development:
 
 ```bash
-export FLASK_APP=app
-export FLASK_ENV=development
-# optionally set a SECRET_KEY and WEATHER_API_KEY
+WEATHER_API_KEY=YOUR-API-KEY
+SECRET_KEY=YOUR-SECRET-KEY
+SQLALCHEMY_DATABASE_URI=sqlite:///path-to-your-db.db
+SQLALCHEMY_TRACK_MODIFICATIONS=False
 ```
 
-4. Initialize the database and run the app (once implemented):
+1. Initialize the database and run the app:
 
 ```bash
 flask run
 ```
-
-## Testing
-
-- Add unit tests for auth, quiz logic, and leaderboard calculations.
-- Create a small integration test that registers a user, simulates quiz answers, and checks leaderboard updates.
-
-## Deployment (PythonAnywhere)
-
-1. Create a PythonAnywhere account and a new web app.
-2. Upload or clone this repository to your account.
-3. Configure the web app to use the Flask WSGI entry point.
-4. Set environment variables (SECRET_KEY, WEATHER_API_KEY) in the PythonAnywhere web app settings.
-
-## Security and edge cases
-
-- Hash passwords with a secure algorithm (Werkzeug/Passlib).
-- Validate and sanitize user input (forms, city names).
-- Rate-limit weather API calls and cache results for a short time to avoid hitting API quotas.
-- Handle duplicate usernames/nicknames gracefully and show helpful validation messages.
