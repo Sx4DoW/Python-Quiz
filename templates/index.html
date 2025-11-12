@@ -4,29 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Python Quiz - Home</title>
+    <script src="{{ url_for('static', filename='js/city-autocomplete.js') }}"></script>
 </head>
 <body>
     <header>
         <h1>Python Quiz</h1>
         <nav>
-            <a href="index.html">Home</a>
-            <a href="register.html">Register</a>
-            <a href="login.html">Login</a>
+            <a href="/">Home</a>
+            <a href="/register">Register</a>
+            <a href="/login">Login</a>
         </nav>
     </header>
 
     <main>
         <section>
             <h2>Weather Forecast</h2>
-            <form method="POST" action="/weather">
+            <form method="POST" action="/">
                 <label for="city">Enter city name:</label>
-                <input type="text" id="city" name="city" placeholder="e.g., Rome" required>
+                <input type="text" id="city" name="city" list="city-suggestions" placeholder="e.g., Rome" required autocomplete="off">
+                <datalist id="city-suggestions">
+                </datalist>
                 <button type="submit">Get Weather</button>
+                <label>
+                    <input type="checkbox" name="force_refresh" value="1">
+                    Force refresh (bypass cache)
+                </label>
             </form>
         </section>
 
+        {% if forecast %}
         <section>
-            <h3>3-Day Weather Forecast</h3>
+            <h3>3-Day Weather Forecast for {{ city|e }}</h3>
             <table border="1">
                 <thead>
                     <tr>
@@ -36,15 +44,27 @@
                         <th>Night Temperature (°C)</th>
                     </tr>
                 </thead>
-                <tbody id="weather-data">
-                    <!-- Weather data will be inserted here by the backend -->
+                <tbody>
+                    {% for day in forecast %}
+                    <tr>
+                        <td>{{ day.date }}</td>
+                        <td>{{ day.day_name }}</td>
+                        <td>{{ day.day_temp }}°C</td>
+                        <td>{{ day.night_temp }}°C</td>
+                    </tr>
+                    {% endfor %}
                 </tbody>
             </table>
         </section>
+        {% elif error %}
+        <section>
+            <p style="color: red;">{{ error }}</p>
+        </section>
+        {% endif %}
     </main>
 
     <footer>
-        <p>Developed by Ivan - Python Quiz Project</p>
+        <p>Developed by Ivan Terracciano - Python Quiz Project</p>
     </footer>
 </body>
 </html>
