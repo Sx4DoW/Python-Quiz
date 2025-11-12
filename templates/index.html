@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Quiz - Home</title>
+</head>
+<body>
+    <header>
+        <h1>Python Quiz</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="register.html">Register</a>
+            <a href="login.html">Login</a>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>Weather Forecast</h2>
+            <form method="POST" action="/weather">
+                <label for="city">Enter city name:</label>
+                <input type="text" id="city" name="city" placeholder="e.g., Rome" required>
+                <button type="submit">Get Weather</button>
+            </form>
+        </section>
+
+        <section>
+            <h3>3-Day Weather Forecast</h3>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Day of Week</th>
+                        <th>Day Temperature (°C)</th>
+                        <th>Night Temperature (°C)</th>
+                    </tr>
+                </thead>
+                <tbody id="weather-data">
+                    <!-- Weather data will be inserted here by the backend -->
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <footer>
+        <p>Developed by Ivan - Python Quiz Project</p>
+    </footer>
+</body>
+</html>
