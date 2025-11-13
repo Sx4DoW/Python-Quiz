@@ -3,8 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="csrf-token" content="{{ csrf_token }}">
-    <script src="/static/js/login.js"></script>
     <title>Login</title>
 </head>
 <body>
@@ -21,7 +19,8 @@
         <p style="color: green;">{{ message }}</p>
     {% endif %}
     
-    <form id="loginForm">
+    <form method="POST" action="/login">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
         <p>
             <label for="username">Username:</label><br>
             <input type="text" id="username" name="username" required>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+</head>
+<body>
+    {% include '_nav.html' %}
+
+    <main>
+    <h2>Profile</h2>
+    
+    {% if message %}
+    <div class="message success">{{ message }}</div>
+    {% endif %}
+    
+    {% if error %}
+    <div class="message error">{{ error }}</div>
+    {% endif %}
+    
+    <!-- Basic Information Section -->
+    <div class="profile-section">
+        <h3>Basic Information</h3>
+        
+        <form method="POST" action="/profile">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+            
+            <div class="profile-field">
+                <label>Username:</label>
+                <span>{{ user.username }}</span>
+            </div>
+            
+            <div class="profile-field">
+                <label>Nickname:</label>
+                <input type="text" name="nickname" value="{{ user.nickname }}" required minlength="3" maxlength="80">
+            </div>
+            
+            <div class="profile-field">
+                <label>Member Since:</label>
+                <span>{{ user.created_at.strftime('%B %d, %Y') if user.created_at else 'Unknown' }}</span>
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Update Profile</button>
+        </form>
+    </div>
+
+    <div class="profile-section">
+        <h3>Statistics</h3>
+        <div class="stat-card">
+            <div class="stat-label">Total Quiz Score</div>
+            <div class="stat-value">{{ user.total_score }}</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">Average Score</div>
+            <div class="stat-value">{{ average_score }}</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">Quizzes Taken</div>
+            <div class="stat-value">{{ total_quizzes }}</div>
+        </div>
+    </div>
+
+    <div class="profile-section">
+        <h3>Recent Quizzes</h3>
+        {% if quizzes %}
+            <ul>
+            {% for quiz in quizzes %}
+                <li>
+                    Question ID: {{ quiz.question_id }}, 
+                    Points: {{ quiz.points }}, 
+                    {% if quiz.correct %}✓ Correct{% else %}✗ Incorrect{% endif %}, 
+                    {{ quiz.timestamp.strftime('%b %d, %Y at %I:%M %p') }}
+                </li>
+            {% endfor %}
+            </ul>
+        {% else %}
+            <p>You haven't taken any quizzes yet.</p>
+        {% endif %}
+    </div>
+
+    {% include '_footer.html' %}
+    </main>
+</body>
+</html>

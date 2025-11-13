@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if user %}{{ user.nickname }}'s Profile{% else %}Profile{% endif %}</title>
+</head>
+<body>
+    {% include '_nav.html' %}
+
+    <main>
+    <h2>{% if user %}{{ user.nickname }}'s Profile{% else %}Profile{% endif %}</h2>
+    
+    {% if error %}
+    <div class="message error">{{ error }}</div>
+    {% endif %}
+    
+    {% if user %}
+    <!-- Basic Information Section -->
+    <div class="profile-section">
+        <h3>Basic Information</h3>
+        
+        <div class="profile-field">
+            <label>Nickname:</label>
+            <span>{{ user.nickname }}</span>
+        </div>
+        
+        <div class="profile-field">
+            <label>Member Since:</label>
+            <span>{{ user.created_at.strftime('%B %d, %Y') if user.created_at else 'Unknown' }}</span>
+        </div>
+    </div>
+
+    <div class="profile-section">
+        <h3>Statistics</h3>
+        <div class="stat-card">
+            <div class="stat-label">Total Quiz Score</div>
+            <div class="stat-value">{{ user.total_score }}</div>
+        </div>
+    </div>
+    {% endif %}
+
+    {% include '_footer.html' %}
+    </main>
+</body>
+</html>

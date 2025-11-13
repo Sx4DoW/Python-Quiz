@@ -12,7 +12,7 @@ class User(db.Model):
     nickname = db.Column(db.String(80), unique=True, nullable=False, index=True)
     password_hash = db.Column(db.String(255), nullable=False)
     total_score = db.Column(db.Integer, default=0, nullable=False)
-    created_at = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
+    created_at = db.Column(db.DateTime, default=datetime.now(), nullable=False)
     
     # Relationship with scores
     scores = db.relationship('Score', backref='user', lazy=True, cascade='all, delete-orphan')

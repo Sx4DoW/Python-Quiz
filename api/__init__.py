@@ -4,7 +4,9 @@ api_bp = Blueprint('api', __name__, url_prefix='/api')
 
 from .weather import weather_routes
 from .auth import auth_routes
+from .profile import profile_routes
 
 # Register all sub-routes
 api_bp.register_blueprint(weather_routes)
 api_bp.register_blueprint(auth_routes)
+api_bp.register_blueprint(profile_routes)
