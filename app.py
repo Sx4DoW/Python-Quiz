@@ -10,6 +10,8 @@ from flask_limiter.util import get_remote_address
 from api import api_bp
 from api.auth_service import authenticate_user, register_user
 from api.profile_service import get_user_profile, update_user_profile
+from api.quiz_service import get_random_question, submit_answer, get_question_by_id
+from api.leaderboard_service import get_leaderboard, get_user_rank
 from db.tables import db, User, Score
 from db.init_db import init_db
 
@@ -171,6 +173,59 @@ def view_profile(nickname):
         return render_template('public_profile.html', user=user)
     else:
         return render_template('public_profile.html', error='User not found')
+
+
+@app.route('/quiz', methods=['GET', 'POST'])
+def quiz_page():
+    """Quiz page - get question and submit answer"""
+    user_id = session.get('user_id')
+    if not user_id:
+        return redirect(url_for('login_page'))
+    
+    result = None
+    error = None
+    
+    if request.method == 'POST':
+        question_id = request.form.get('question_id')
+        answer = request.form.get('answer', '').strip().lower()
+        
+        if question_id and answer:
+            success, err, result = submit_answer(user_id, int(question_id), answer)
+            if not success:
+                error = err
+    
+    # Check if a specific question ID is requested
+    question_id = request.args.get('id', type=int)
+    if question_id:
+        question = get_question_by_id(question_id)
+        if not question:
+            error = 'Question not found'
+            question = get_random_question(user_id)
+    else:
+        question = get_random_question(user_id)
+    
+    if not question:
+        return render_template('quiz.html', error='No questions available')
+    
+    return render_template('quiz.html', question=question, result=result, error=error)
+
+
+@app.route('/leaderboard')
+def leaderboard_page():
+    """Leaderboard page showing users by score with pagination"""
+    page = request.args.get('page', 1, type=int)
+    
+    leaderboard_data = get_leaderboard(page=page, per_page=50)
+    
+    user_rank = None
+    user_id = session.get('user_id')
+    if user_id:
+        user_rank = get_user_rank(user_id)
+    
+    return render_template('leaderboard.html', 
+                         leaderboard=leaderboard_data['leaderboard'],
+                         pagination=leaderboard_data,
+                         user_rank=user_rank)
 
 
 @app.route('/logout', methods=['GET'])

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard - Python Quiz</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/main.css') }}">
+</head>
+<body>
+    {% include '_nav.html' %}
+    
+    <main class="leaderboard-container">
+        <h2>Leaderboard</h2>
+        <p class="leaderboard-subtitle">All players ranked by total score</p>
+        
+        {% if user_rank %}
+        <div class="user-rank-badge">
+            <p>Your Rank: <strong>#{{ user_rank.rank }}</strong> | Score: <strong>{{ user_rank.score }}</strong></p>
+        </div>
+        {% endif %}
+        
+        {% if leaderboard %}
+            <div class="leaderboard-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Player</th>
+                            <th>Score</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for entry in leaderboard %}
+                        <tr class="{% if loop.index <= 3 %}top-{{ loop.index }}{% endif %}{% if session.get('user_id') == entry.user_id %} current-user{% endif %}">
+                            <td class="rank">
+                                {{ entry.rank }}
+                            </td>
+                            <td class="nickname">
+                                <a href="/profile/{{ entry.nickname }}">{{ entry.nickname }}</a>
+                                {% if session.get('user_id') == entry.user_id %}
+                                    <span class="you-badge">(You)</span>
+                                {% endif %}
+                            </td>
+                            <td class="score">{{ entry.score }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <p class="no-data">No scores yet. Be the first to take the quiz!</p>
+        {% endif %}
+        
+        {% if pagination and pagination.total_pages > 1 %}
+        <div class="pagination">
+            {% if pagination.has_prev %}
+                <a href="?page=1" class="page-link">&laquo; First</a>
+                <a href="?page={{ pagination.page - 1 }}" class="page-link">&lsaquo; Prev</a>
+            {% endif %}
+            
+            <span class="page-info">
+                Page {{ pagination.page }} of {{ pagination.total_pages }}
+                ({{ pagination.total }} players)
+            </span>
+            
+            {% if pagination.has_next %}
+                <a href="?page={{ pagination.page + 1 }}" class="page-link">Next &rsaquo;</a>
+                <a href="?page={{ pagination.total_pages }}" class="page-link">Last &raquo;</a>
+            {% endif %}
+        </div>
+        {% endif %}
+        
+        <div class="leaderboard-actions">
+            {% if session.get('user_id') %}
+                <a href="/quiz" class="btn btn-primary">Take Quiz</a>
+            {% else %}
+                <a href="/register" class="btn btn-primary">Register to Play</a>
+            {% endif %}
+        </div>
+    </main>
+    
+    {% include '_footer.html' %}
+</body>
+</html>

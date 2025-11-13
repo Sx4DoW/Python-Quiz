@@ -1,0 +1,82 @@
+[
+    {
+        "prompt": "What is the main difference between supervised and unsupervised learning?",
+        "option_a": "Supervised learning uses labeled data, unsupervised learning uses unlabeled data",
+        "option_b": "Supervised learning is faster than unsupervised learning",
+        "option_c": "Unsupervised learning requires more computational power",
+        "option_d": "There is no difference between them",
+        "correct_option": "a"
+    },
+    {
+        "prompt": "Which Python library is most commonly used for machine learning?",
+        "option_a": "Flask",
+        "option_b": "scikit-learn",
+        "option_c": "Django",
+        "option_d": "Requests",
+        "correct_option": "b"
+    },
+    {
+        "prompt": "What does the term 'overfitting' mean in machine learning?",
+        "option_a": "The model performs well on training data but poorly on new data",
+        "option_b": "The model is too simple",
+        "option_c": "The model trains too quickly",
+        "option_d": "The model doesn't learn from the data",
+        "correct_option": "a"
+    },
+    {
+        "prompt": "Which algorithm is commonly used for classification problems?",
+        "option_a": "Linear Regression",
+        "option_b": "K-Means Clustering",
+        "option_c": "Decision Trees",
+        "option_d": "PCA",
+        "correct_option": "c"
+    },
+    {
+        "prompt": "What is a neural network's activation function used for?",
+        "option_a": "To introduce non-linearity into the model",
+        "option_b": "To increase training speed",
+        "option_c": "To reduce the number of parameters",
+        "option_d": "To visualize the network",
+        "correct_option": "a"
+    },
+    {
+        "prompt": "Which Python library is specifically designed for deep learning?",
+        "option_a": "NumPy",
+        "option_b": "Pandas",
+        "option_c": "TensorFlow",
+        "option_d": "Matplotlib",
+        "correct_option": "c"
+    },
+    {
+        "prompt": "What does 'epoch' mean in machine learning training?",
+        "option_a": "One complete pass through the entire training dataset",
+        "option_b": "The number of layers in a neural network",
+        "option_c": "The learning rate value",
+        "option_d": "The validation accuracy",
+        "correct_option": "a"
+    },
+    {
+        "prompt": "Which metric is used to evaluate classification model performance?",
+        "option_a": "Mean Squared Error",
+        "option_b": "Accuracy",
+        "option_c": "R-squared",
+        "option_d": "Standard Deviation",
+        "correct_option": "b"
+    },
+    {
+        "prompt": "What is the purpose of a confusion matrix?",
+        "option_a": "To visualize the performance of a classification algorithm",
+        "option_b": "To calculate the learning rate",
+        "option_c": "To reduce overfitting",
+        "option_d": "To normalize data",
+        "correct_option": "a"
+    },
+    {
+        "prompt": "Which technique is used to prevent overfitting in neural networks?",
+        "option_a": "Increasing the number of epochs",
+        "option_b": "Dropout",
+        "option_c": "Using larger datasets only",
+        "option_d": "Removing activation functions",
+        "correct_option": "b"
+    }
+]

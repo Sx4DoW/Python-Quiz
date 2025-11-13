@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz - Python Quiz</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/main.css') }}">
+</head>
+<body>
+    {% include '_nav.html' %}
+
+    <main>
+        <h2>Python Quiz</h2>
+        
+        {% if error %}
+        <div class="message error">{{ error }}</div>
+        {% endif %}
+        
+        {% if result %}
+        <div class="quiz-result">
+            {% if result.correct %}
+                <h3 class="success">✓ Correct!</h3>
+                {% if result.points > 0 %}
+                    <p>You earned {{ result.points }} points!</p>
+                {% else %}
+                    <p>You already answered this question before.</p>
+                {% endif %}
+            {% else %}
+                <h3 class="error">✗ Incorrect</h3>
+                <p>Better luck next time!</p>
+            {% endif %}
+            <p>Your total score: {{ result.total_score }}</p>
+            <a href="/quiz" class="btn">Next Question</a>
+        </div>
+        {% elif question %}
+        <div class="quiz-question">
+            <h3>{{ question.prompt }}</h3>
+            
+            <form method="POST" action="/quiz">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+                <input type="hidden" name="question_id" value="{{ question.id }}">
+                
+                <div class="quiz-options">
+                    <label class="quiz-option">
+                        <input type="radio" name="answer" value="a" required>
+                        <span>A) {{ question.option_a }}</span>
+                    </label>
+                    
+                    <label class="quiz-option">
+                        <input type="radio" name="answer" value="b" required>
+                        <span>B) {{ question.option_b }}</span>
+                    </label>
+                    
+                    <label class="quiz-option">
+                        <input type="radio" name="answer" value="c" required>
+                        <span>C) {{ question.option_c }}</span>
+                    </label>
+                    
+                    <label class="quiz-option">
+                        <input type="radio" name="answer" value="d" required>
+                        <span>D) {{ question.option_d }}</span>
+                    </label>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Submit Answer</button>
+            </form>
+        </div>
+        {% endif %}
+    </main>
+
+    {% include '_footer.html' %}
+</body>
+</html>

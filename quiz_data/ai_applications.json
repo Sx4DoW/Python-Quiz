@@ -1,0 +1,82 @@
+[
+    {
+        "prompt": "Which Python framework can be used to integrate AI models into web applications?",
+        "option_a": "Flask",
+        "option_b": "Microsoft Word",
+        "option_c": "Photoshop",
+        "option_d": "Excel",
+        "correct_option": "a"
+    },
+    {
+        "prompt": "What is TensorFlow Serving used for?",
+        "option_a": "Deploying machine learning models in production",
+        "option_b": "Creating databases",
+        "option_c": "Designing websites",
+        "option_d": "Editing images",
+        "correct_option": "a"
+    },
+    {
+        "prompt": "Which format is commonly used to save trained machine learning models?",
+        "option_a": ".txt",
+        "option_b": ".pkl (pickle) or .h5",
+        "option_c": ".jpg",
+        "option_d": ".mp3",
+        "correct_option": "b"
+    },
+    {
+        "prompt": "What is an API in the context of AI applications?",
+        "option_a": "Application Programming Interface that allows different software to communicate",
+        "option_b": "A type of neural network",
+        "option_c": "A Python library for data visualization",
+        "option_d": "A machine learning algorithm",
+        "correct_option": "a"
+    },
+    {
+        "prompt": "Which cloud platform offers AI/ML services like AWS SageMaker?",
+        "option_a": "Amazon Web Services (AWS)",
+        "option_b": "Microsoft Paint",
+        "option_c": "Adobe Reader",
+        "option_d": "Windows Media Player",
+        "correct_option": "a"
+    },
+    {
+        "prompt": "What is the purpose of using Docker containers for AI applications?",
+        "option_a": "To package applications with all dependencies for consistent deployment",
+        "option_b": "To increase model accuracy",
+        "option_c": "To visualize data",
+        "option_d": "To create training datasets",
+        "correct_option": "a"
+    },
+    {
+        "prompt": "Which Python library is used for creating RESTful APIs?",
+        "option_a": "Flask or FastAPI",
+        "option_b": "Matplotlib",
+        "option_c": "NumPy",
+        "option_d": "Pandas",
+        "correct_option": "a"
+    },
+    {
+        "prompt": "What is model inference?",
+        "option_a": "Using a trained model to make predictions on new data",
+        "option_b": "Training a new model from scratch",
+        "option_c": "Deleting a model",
+        "option_d": "Visualizing training data",
+        "correct_option": "a"
+    },
+    {
+        "prompt": "Which tool can be used to monitor and manage deployed ML models?",
+        "option_a": "MLflow",
+        "option_b": "Notepad",
+        "option_c": "Calculator",
+        "option_d": "Paint",
+        "correct_option": "a"
+    },
+    {
+        "prompt": "What is the benefit of using pre-trained models in applications?",
+        "option_a": "Saves time and computational resources by leveraging existing knowledge",
+        "option_b": "Makes models less accurate",
+        "option_c": "Requires more data to train",
+        "option_d": "Increases application size unnecessarily",
+        "correct_option": "a"
+    }
+]

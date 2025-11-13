@@ -1,0 +1,82 @@
+[
+    {
+        "prompt": "Which Python library is most commonly used for computer vision tasks?",
+        "option_a": "NumPy",
+        "option_b": "OpenCV",
+        "option_c": "Pandas",
+        "option_d": "Flask",
+        "correct_option": "b"
+    },
+    {
+        "prompt": "What does RGB stand for in image processing?",
+        "option_a": "Red, Green, Black",
+        "option_b": "Real, Generated, Binary",
+        "option_c": "Red, Green, Blue",
+        "option_d": "Rotate, Grayscale, Blur",
+        "correct_option": "c"
+    },
+    {
+        "prompt": "What is edge detection used for in computer vision?",
+        "option_a": "To identify boundaries of objects in an image",
+        "option_b": "To increase image resolution",
+        "option_c": "To compress images",
+        "option_d": "To add colors to images",
+        "correct_option": "a"
+    },
+    {
+        "prompt": "Which technique is used to recognize faces in images?",
+        "option_a": "Text classification",
+        "option_b": "Facial recognition algorithms",
+        "option_c": "Linear regression",
+        "option_d": "Data clustering",
+        "correct_option": "b"
+    },
+    {
+        "prompt": "What is the purpose of image segmentation?",
+        "option_a": "To divide an image into multiple segments or regions",
+        "option_b": "To increase image size",
+        "option_c": "To change image colors",
+        "option_d": "To compress images",
+        "correct_option": "a"
+    },
+    {
+        "prompt": "Which neural network architecture is commonly used for image classification?",
+        "option_a": "Recurrent Neural Networks (RNN)",
+        "option_b": "Convolutional Neural Networks (CNN)",
+        "option_c": "Long Short-Term Memory (LSTM)",
+        "option_d": "Generative Adversarial Networks (GAN)",
+        "correct_option": "b"
+    },
+    {
+        "prompt": "What does a convolutional layer do in a CNN?",
+        "option_a": "Extracts features from images using filters",
+        "option_b": "Increases image brightness",
+        "option_c": "Converts images to text",
+        "option_d": "Compresses the image file",
+        "correct_option": "a"
+    },
+    {
+        "prompt": "What is object detection in computer vision?",
+        "option_a": "Identifying and locating objects within an image",
+        "option_b": "Removing objects from images",
+        "option_c": "Creating 3D models from images",
+        "option_d": "Converting images to videos",
+        "correct_option": "a"
+    },
+    {
+        "prompt": "Which algorithm is commonly used for real-time object detection?",
+        "option_a": "K-Means",
+        "option_b": "YOLO (You Only Look Once)",
+        "option_c": "Linear Regression",
+        "option_d": "Decision Trees",
+        "correct_option": "b"
+    },
+    {
+        "prompt": "What is the purpose of data augmentation in computer vision?",
+        "option_a": "To artificially increase the size and diversity of the training dataset",
+        "option_b": "To delete unnecessary images",
+        "option_c": "To compress images",
+        "option_d": "To convert images to grayscale",
+        "correct_option": "a"
+    }
+]

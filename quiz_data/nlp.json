@@ -1,0 +1,82 @@
+[
+    {
+        "prompt": "What does NLP stand for?",
+        "option_a": "Natural Language Programming",
+        "option_b": "Natural Language Processing",
+        "option_c": "Neural Language Processing",
+        "option_d": "New Language Protocol",
+        "correct_option": "b"
+    },
+    {
+        "prompt": "Which Python library is most commonly used for NLP tasks?",
+        "option_a": "NumPy",
+        "option_b": "Matplotlib",
+        "option_c": "NLTK (Natural Language Toolkit)",
+        "option_d": "Flask",
+        "correct_option": "c"
+    },
+    {
+        "prompt": "What is tokenization in NLP?",
+        "option_a": "Converting text into individual words or tokens",
+        "option_b": "Encrypting text data",
+        "option_c": "Translating text to another language",
+        "option_d": "Counting the number of words",
+        "correct_option": "a"
+    },
+    {
+        "prompt": "What is sentiment analysis used for?",
+        "option_a": "To determine the emotional tone of a text",
+        "option_b": "To count words in a document",
+        "option_c": "To translate languages",
+        "option_d": "To generate random text",
+        "correct_option": "a"
+    },
+    {
+        "prompt": "What does a stop word refer to in NLP?",
+        "option_a": "Common words that are usually filtered out (e.g., 'the', 'is', 'and')",
+        "option_b": "Words that stop a program from running",
+        "option_c": "The last word in a sentence",
+        "option_d": "Words that are misspelled",
+        "correct_option": "a"
+    },
+    {
+        "prompt": "Which technique converts words into numerical vectors?",
+        "option_a": "Tokenization",
+        "option_b": "Word Embedding (e.g., Word2Vec)",
+        "option_c": "Stemming",
+        "option_d": "Parsing",
+        "correct_option": "b"
+    },
+    {
+        "prompt": "What is the purpose of Named Entity Recognition (NER)?",
+        "option_a": "To identify and classify named entities (people, places, organizations) in text",
+        "option_b": "To translate text",
+        "option_c": "To count sentences",
+        "option_d": "To remove punctuation",
+        "correct_option": "a"
+    },
+    {
+        "prompt": "Which model architecture is commonly used for language translation?",
+        "option_a": "Convolutional Neural Networks (CNN)",
+        "option_b": "Transformer models (e.g., BERT, GPT)",
+        "option_c": "Decision Trees",
+        "option_d": "K-Means Clustering",
+        "correct_option": "b"
+    },
+    {
+        "prompt": "What is lemmatization in NLP?",
+        "option_a": "Reducing words to their base or dictionary form",
+        "option_b": "Removing all vowels from words",
+        "option_c": "Capitalizing all words",
+        "option_d": "Translating words to another language",
+        "correct_option": "a"
+    },
+    {
+        "prompt": "What is the bag-of-words model?",
+        "option_a": "A text representation that counts word frequency, ignoring grammar and word order",
+        "option_b": "A method to translate languages",
+        "option_c": "A way to compress text files",
+        "option_d": "A technique to generate new sentences",
+        "correct_option": "a"
+    }
+]

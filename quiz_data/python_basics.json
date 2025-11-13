@@ -1,0 +1,82 @@
+[
+    {
+        "prompt": "What is the correct way to create a function in Python?",
+        "option_a": "function myFunc():",
+        "option_b": "def myFunc():",
+        "option_c": "create myFunc():",
+        "option_d": "func myFunc():",
+        "correct_option": "b"
+    },
+    {
+        "prompt": "Which of the following is used to define a block of code in Python?",
+        "option_a": "Brackets",
+        "option_b": "Parentheses",
+        "option_c": "Indentation",
+        "option_d": "Quotation",
+        "correct_option": "c"
+    },
+    {
+        "prompt": "What is the output of: print(type([]))?",
+        "option_a": "<class 'list'>",
+        "option_b": "<class 'dict'>",
+        "option_c": "<class 'tuple'>",
+        "option_d": "<class 'set'>",
+        "correct_option": "a"
+    },
+    {
+        "prompt": "Which keyword is used to create a class in Python?",
+        "option_a": "Class",
+        "option_b": "class",
+        "option_c": "define",
+        "option_d": "object",
+        "correct_option": "b"
+    },
+    {
+        "prompt": "What does the len() function do?",
+        "option_a": "Returns the length of an object",
+        "option_b": "Returns the type of an object",
+        "option_c": "Returns the value of an object",
+        "option_d": "Deletes an object",
+        "correct_option": "a"
+    },
+    {
+        "prompt": "Which operator is used for exponentiation in Python?",
+        "option_a": "^",
+        "option_b": "**",
+        "option_c": "exp()",
+        "option_d": "pow",
+        "correct_option": "b"
+    },
+    {
+        "prompt": "What is the correct file extension for Python files?",
+        "option_a": ".pyth",
+        "option_b": ".pt",
+        "option_c": ".py",
+        "option_d": ".python",
+        "correct_option": "c"
+    },
+    {
+        "prompt": "How do you insert comments in Python?",
+        "option_a": "// comment",
+        "option_b": "/* comment */",
+        "option_c": "# comment",
+        "option_d": "<!-- comment -->",
+        "correct_option": "c"
+    },
+    {
+        "prompt": "Which method is used to add an element at the end of a list?",
+        "option_a": "add()",
+        "option_b": "append()",
+        "option_c": "push()",
+        "option_d": "insert()",
+        "correct_option": "b"
+    },
+    {
+        "prompt": "What is the output of: print(2 ** 3)?",
+        "option_a": "6",
+        "option_b": "8",
+        "option_c": "9",
+        "option_d": "5",
+        "correct_option": "b"
+    }
+]

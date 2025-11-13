@@ -64,13 +64,17 @@
     <div class="profile-section">
         <h3>Recent Quizzes</h3>
         {% if quizzes %}
-            <ul>
+            <ul class="quiz-history">
             {% for quiz in quizzes %}
-                <li>
-                    Question ID: {{ quiz.question_id }}, 
-                    Points: {{ quiz.points }}, 
-                    {% if quiz.correct %}✓ Correct{% else %}✗ Incorrect{% endif %}, 
-                    {{ quiz.timestamp.strftime('%b %d, %Y at %I:%M %p') }}
+                <li class="quiz-history-item {% if quiz.correct %}correct{% else %}incorrect{% endif %}">
+                    <a href="/quiz?id={{ quiz.question_id }}" class="quiz-link">
+                        <span class="quiz-status">{% if quiz.correct %}✓{% else %}✗{% endif %}</span>
+                        <span class="quiz-info">
+                            <strong>Question #{{ quiz.question_id }}</strong> - 
+                            {{ quiz.points }} points
+                        </span>
+                        <span class="quiz-date">{{ quiz.timestamp.strftime('%b %d, %Y at %I:%M %p') }}</span>
+                    </a>
                 </li>
             {% endfor %}
             </ul>
