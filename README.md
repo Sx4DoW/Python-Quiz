@@ -297,14 +297,6 @@ python seed_questions.py
 
 7. **Reload web app** and test
 
-### Production Considerations
-- Change `SECRET_KEY` to a strong random value
-- Set `FLASK_ENV=production`
-- Use a production database (PostgreSQL recommended)
-- Enable HTTPS
-- Configure proper logging
-- Set up regular database backups
-
 ## 🛠️ Technologies Used
 
 - **Backend**: Flask 3.0+
@@ -370,12 +362,3 @@ This project is created for educational purposes as part of the Kodland Python P
 ## 👨‍💻 Development
 
 Built with ❤️ for learning Python, Flask, and AI concepts through interactive quizzes.
-
-### Future Enhancements
-- Admin panel for quiz management
-- Question categories and filtering
-- Timed quizzes
-- Achievement badges
-- Social features (following users, comments)
-- Quiz statistics and analytics
-- Mobile app version
