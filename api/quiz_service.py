@@ -36,18 +36,16 @@ def submit_answer(user_id, question_id, answer):
         return False, 'User not found', None
     
     is_correct = question.is_correct(answer)
+    points = 10 if is_correct else 0
     
-    existing_attempt = Score.query.filter_by(
+    previously_correct = Score.query.filter_by(
         user_id=user_id,
-        question_id=question_id
-    ).first()
+        question_id=question_id,
+        correct=True
+    ).first() is not None
     
-    if existing_attempt:
-        points = 0
-    else:
-        points = 10 if is_correct else 0
-        if points > 0:
-            user.total_score += points
+    if is_correct and not previously_correct:
+        user.total_score += 10
     
     score = Score()
     score.user_id = user_id
@@ -62,7 +60,7 @@ def submit_answer(user_id, question_id, answer):
             'correct': is_correct,
             'points': points,
             'total_score': user.total_score,
-            'already_answered': existing_attempt is not None
+            'already_answered': previously_correct
         }
     except Exception as e:
         db.session.rollback()

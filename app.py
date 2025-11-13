@@ -12,6 +12,7 @@ from api.auth_service import authenticate_user, register_user
 from api.profile_service import get_user_profile, update_user_profile
 from api.quiz_service import get_random_question, submit_answer, get_question_by_id
 from api.leaderboard_service import get_leaderboard, get_user_rank
+from api.services import get_weather_forecast
 from db.tables import db, User, Score
 from db.init_db import init_db
 
@@ -56,29 +57,26 @@ app.register_blueprint(api_bp)
 @app.route('/', methods=['GET', 'POST'])
 def home_page():
     """Home page with weather forecast form"""
-    forecast = None
-    error = None
-    city = None
+    if request.method == 'GET':
+        return render_template('index.html')
     
-    if request.method == 'POST':
-        city = request.form.get('city', '').strip()
-        city = bleach.clean(city, tags=[], strip=True)
-        force_refresh = request.form.get('force_refresh') == '1'
-        
-        if city and len(city) <= 100:
-            api_url = f"{request.host_url}api/weather"
-            try:
-                response = requests.post(api_url, json={'city': city}, timeout=15)
-                if response.status_code == 200:
-                    forecast = response.json().get('forecast')
-                else:
-                    error = f"Could not retrieve weather data for '{city}'"
-            except requests.exceptions.RequestException:
-                error = f"Error connecting to weather service"
-        else:
-            error = "Please enter a valid city name (1-100 characters)."
+    city = request.form.get('city', '').strip()
+    city = bleach.clean(city, tags=[], strip=True)
+    force_refresh = request.form.get('force_refresh') == '1'
     
-    return render_template('index.html', forecast=forecast, error=error, city=city)
+    if not city or len(city) > 100:
+        return render_template('index.html', 
+                             error="Please enter a valid city name (1-100 characters).",
+                             city=city)
+    
+    forecast = get_weather_forecast(city, force_refresh=force_refresh)
+    
+    if forecast:
+        return render_template('index.html', forecast=forecast, city=city)
+    else:
+        return render_template('index.html', 
+                             error=f"Could not retrieve weather data for '{city}'",
+                             city=city)
 
 @app.route('/login', methods=['GET', 'POST'])
 @limiter.limit("10 per minute")
@@ -99,7 +97,7 @@ def login_page():
     
 
 @app.route('/register', methods=['GET', 'POST'])
-@limiter.limit("5 per hour")
+@limiter.limit("50 per hour")
 def register_page():
     """Registration page and user creation"""
     if request.method == 'GET':
