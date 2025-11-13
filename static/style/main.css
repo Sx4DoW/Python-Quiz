@@ -1,0 +1,19 @@
+/* Placeholder CSS file - To be styled later */
+
+/* Error and success message classes */
+.error {
+    color: red;
+}
+
+.success {
+    color: green;
+}
+
+/* Message container classes */
+.message.error {
+    color: red;
+}
+
+.message.success {
+    color: green;
+}

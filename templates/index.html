@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token }}">
     <title>Python Quiz - Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/main.css') }}">
     <script src="{{ url_for('static', filename='js/city-autocomplete.js') }}"></script>
 </head>
 <body>
@@ -16,8 +17,7 @@
             <form method="POST" action="/">
                 <label for="city">Enter city name:</label>
                 <input type="text" id="city" name="city" list="city-suggestions" placeholder="e.g., Rome" required autocomplete="off">
-                <datalist id="city-suggestions">
-                </datalist>
+                <datalist id="city-suggestions"></datalist>
                 <button type="submit">Get Weather</button>
                 <label>
                     <input type="checkbox" name="force_refresh" value="1">
@@ -50,7 +50,7 @@
         </section>
         {% elif error %}
         <section>
-            <p style="color: red;">{{ error }}</p>
+            <p class="error">{{ error }}</p>
         </section>
         {% endif %}
     </main>

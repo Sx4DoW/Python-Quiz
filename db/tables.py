@@ -3,6 +3,7 @@ from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
 from db.init_db import db
 
+
 class User(db.Model):
     """User model for authentication and scoring"""
     __tablename__ = 'users'
@@ -14,7 +15,6 @@ class User(db.Model):
     total_score = db.Column(db.Integer, default=0, nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.now(), nullable=False)
     
-    # Relationship with scores
     scores = db.relationship('Score', backref='user', lazy=True, cascade='all, delete-orphan')
     
     def set_password(self, password):
@@ -39,10 +39,9 @@ class Question(db.Model):
     option_b = db.Column(db.String(255), nullable=False)
     option_c = db.Column(db.String(255), nullable=False)
     option_d = db.Column(db.String(255), nullable=False)
-    correct_option = db.Column(db.String(1), nullable=False)  # 'a', 'b', 'c', or 'd'
+    correct_option = db.Column(db.String(1), nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
     
-    # Relationship with scores
     scores = db.relationship('Score', backref='question', lazy=True)
     
     def is_correct(self, answer):
@@ -54,7 +53,7 @@ class Question(db.Model):
 
 
 class Score(db.Model):
-    """Individual quiz attempt/score record"""
+    """Individual quiz attempt record"""
     __tablename__ = 'scores'
     
     id = db.Column(db.Integer, primary_key=True)

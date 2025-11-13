@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/main.css') }}">
 </head>
 <body>
     {% include '_nav.html' %}
@@ -19,7 +20,6 @@
     <div class="message error">{{ error }}</div>
     {% endif %}
     
-    <!-- Basic Information Section -->
     <div class="profile-section">
         <h3>Basic Information</h3>
         
